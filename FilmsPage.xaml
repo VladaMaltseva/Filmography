@@ -1,0 +1,77 @@
+﻿<Page x:Class="filmography.FilmsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:filmography"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="768"  d:DesignWidth="1024" 
+      Title="FilmsPage" 
+      Background="#827397"
+      FontSize="25" 
+      FontFamily="Century Gothic" 
+      Cursor="Hand" Margin="0,0,0,0">
+
+
+    <Grid VerticalAlignment="Top" Margin="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Margin="0,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <DataGrid AutoGenerateColumns="False" Height="470" HorizontalAlignment="Left" Margin="10,20,0,-324" Width="700" x:Name="filmsGrid" VerticalAlignment="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Year_of_release}" Header="Year of release" Width="150"/>
+                    <DataGridTextColumn Binding="{Binding Id_actor}" Header="ID actor" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Id_studio}" Header="ID studio" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid AutoGenerateColumns="False" Height="470" x:Name="filmsSearchGrid" Width="700"  Visibility="Hidden" HorizontalAlignment="Left" Margin="10,20,0,-324" VerticalAlignment="Top" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Year_of_release}" Header="Year of release" Width="150"/>
+                    <DataGridTextColumn Binding="{Binding Id_actor}" Header="ID actor" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Id_studio}" Header="ID studio" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Label Foreground="White" HorizontalAlignment="Center" >Films</Label>
+        <Button Grid.Row="1"  Content="Add" Height="40" Width="120" Background="#4D4C7D" FontSize="18" BorderBrush="#4D4C7D" HorizontalAlignment="Left" Cursor="Hand" Margin="61,190,0,-230" Click="Button_Click_AddingForm"/>
+        <Button Grid.Row="1"  Content="Edit" Height="40" Width="120" Background="#4D4C7D" FontSize="18" BorderBrush="#4D4C7D" HorizontalAlignment="Left" Cursor="Hand" Margin="221,190,0,-230" Click="Button_Click_EditingForm"/>
+        <Button Grid.Row="1"  Content="Delete" Height="40" Width="120" Background="#4D4C7D" FontSize="18" BorderBrush="#4D4C7D" HorizontalAlignment="Left" Cursor="Hand" Margin="381,190,0,-230" Click="Button_Click_DeletingForm"/>
+        <Button Grid.Row="1"  Content="Search" Height="40" Width="120" Background="#4D4C7D" FontSize="18" BorderBrush="#4D4C7D" HorizontalAlignment="Left" Cursor="Hand" Margin="541,190,0,-230" Click="Button_Click_SearchingForm"/>
+            <Canvas Background="White" Width="280" Height="350" Margin="714,60,20,20" Grid.RowSpan="2" Visibility="Hidden" x:Name="AddingForm" VerticalAlignment="Top">
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="104" Canvas.Top="10">Adding</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="60">Name</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="100">Country</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="140">Year of release</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="180">Actor's name</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="220">Studio's name</Label>
+            <TextBox x:Name="addName" Height="27" Canvas.Left="90" TextWrapping="Wrap" Text="" FontSize="16" Canvas.Top="60" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="addCountry" Height="27" Canvas.Left="90" TextWrapping="Wrap" Text="" FontSize="16" Canvas.Top="100" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="addYear" Height="27" Canvas.Left="154" TextWrapping="Wrap" Text="" FontSize="16" Canvas.Top="140" Width="113" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox x:Name="addNameActor" Canvas.Left="150" Canvas.Top="180" Width="120" VerticalAlignment="Top" FontSize="18"/>
+            <ComboBox x:Name="addNameStudio" Canvas.Left="150" Canvas.Top="220" Width="120" VerticalAlignment="Top" FontSize="18"/>
+            <Button Content="Add" Height="40" Width="120" Background="#B1BCE6" FontSize="18" BorderBrush="#B1BCE6" Canvas.Left="147" Canvas.Top="282" Click="Button_Click_Adding" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Content="Cancel" Height="40" Width="120" Background="#9A86A4" FontSize="18" BorderBrush="#9A86A4" Canvas.Left="10" Canvas.Top="282" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_Cancel"/>
+        </Canvas>
+        <Canvas Background="White" Width="280" Height="200" Margin="714,60,20,20" Grid.RowSpan="2" Visibility="Hidden" x:Name="SearchFilm" VerticalAlignment="Top">
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="104" Canvas.Top="10">Searching</Label>
+            <Label   FontSize="18" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="60">Name</Label>
+            <TextBox x:Name="serchName" Height="27" Canvas.Left="90" TextWrapping="Wrap" Text="" FontSize="16" Canvas.Top="60" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Button Content="Search" Height="40" Width="120" Background="#B1BCE6" FontSize="18" BorderBrush="#B1BCE6" Canvas.Left="147" Canvas.Top="126" Click="Button_Click_Searching" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Content="Cancel" Height="40" Width="120" Background="#9A86A4" FontSize="18" BorderBrush="#9A86A4" Canvas.Left="10" Canvas.Top="126" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_Cancel"/>
+        </Canvas>
+    </Grid>
+</Page>
